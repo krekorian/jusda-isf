@@ -1,0 +1,41 @@
+fieldset {display: flex,
+    /* flex-wrap:wrap */
+    }
+
+label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+#fieldsetcontainer{
+    display: flex
+}
+
+#fieldsetinput{
+     width: 50%;
+     float: left;
+     display: flex;
+     justify-content: center;
+     margin-bottom: 10px;
+     
+}
+
+/* #isfForm{   overflow: scroll;  } */
+
+#createIsfMain{
+    padding-bottom:40pt
+}
+
+.formContainer{
+     
+     display: -ms-inline-grid;
+}
+
+input{
+    margin-left: 5px;
+    padding: 0 10px;
+    border-radius: 5px;
+    border: 2px solid #0f0d0b;
+    line-height: 10px;
+}
+

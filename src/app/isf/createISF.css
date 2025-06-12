@@ -1,0 +1,24 @@
+#inputboxerror{
+    
+    color: red;
+}
+
+input{
+    margin: 10px;
+    height: 20px;
+}
+
+.fieldset{
+    padding-top:20px;
+    padding-bottom: 20px;
+    border-radius: 20px;
+    border-width: 5px;
+    border-color: rgb(0, 119, 255);
+    border-style:solid;
+}
+
+select{
+    border-radius: 5px;
+    margin:10px
+}
+
