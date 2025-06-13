@@ -109,6 +109,36 @@ const TransportData = () => {
         isf1["transportData"]["unloadingPort"] = e.target.value
         dispatch(info(isf1))
     }
+        const motChange = (e) => {
+        settransportDataEntry((t) => ({ ...t, mot: e.target.value }))
+        isf1["transportData"]["mot"] = e.target.value
+        dispatch(info(isf1))
+    }
+        const shipmentTypeChange = (e) => {
+        settransportDataEntry((t) => ({ ...t, shipmentType: e.target.value }))
+        isf1["transportData"]["shipmentType"] = e.target.value
+        dispatch(info(isf1))
+    }
+        const boardDateTypeChange = (e) => {
+        settransportDataEntry((t) => ({ ...t, boardDate: e.target.value }))
+        isf1["transportData"]["boardDate"] = e.target.value
+        dispatch(info(isf1))
+    }
+        const etaTypeChange = (e) => {
+        settransportDataEntry((t) => ({ ...t, eta: e.target.value }))
+        isf1["transportData"]["eta"] = e.target.value
+        dispatch(info(isf1))
+    }
+        const actionReasonCodeTypeChange = (e) => {
+        settransportDataEntry((t) => ({ ...t, actionReasonCode: e.target.value }))
+        isf1["transportData"]["actionReasonCode"] = e.target.value
+        dispatch(info(isf1))
+    }
+        const poNumberTypeChange = (e) => {
+        settransportDataEntry((t) => ({ ...t, poNumber: e.target.value }))
+        isf1["transportData"]["poNumber"] = e.target.value
+        dispatch(info(isf1))
+    }
 
     return (
         <div>
@@ -135,7 +165,7 @@ const TransportData = () => {
                     </div>
                     <div id="fieldsetinput">
                         <label htmlFor="MOT">MOT</label>
-                        <select name="MOT" id="MOT">
+                        <select name="MOT" id="MOT" onChange={motChange} value={transportDataEntry.mot}>
                             <option value="containerized">
                                 Containerized
                             </option>
@@ -146,7 +176,7 @@ const TransportData = () => {
                     </div>
                     <div id="fieldsetinput">
                         <label htmlFor="shipment_type">Shipment Type</label>
-                        <select name="shipment_type" id="shipment_type">
+                        <select name="shipment_type" id="shipment_type" onChange={shipmentTypeChange} value={transportDataEntry.shipmentType}>
                             <option value="standardRegular">
                                 01 Standard/Regular filings
                             </option>
@@ -192,6 +222,7 @@ const TransportData = () => {
                         type="date"
                         id="onboardDate"
                         name="isf-onboardDate"
+                        onChange={boardDateTypeChange} value={transportDataEntry.boardDate}
                     />
                 </div>
                 <div id="fieldsetinput">
@@ -202,11 +233,12 @@ const TransportData = () => {
                         type="date"
                         id="ETA"
                         name="isf-ETA"
+                        onChange={etaTypeChange} value={transportDataEntry.eta}
                     />
                 </div>
                 <div id="fieldsetinput">
                     <label htmlFor="actionReasonCode">Action Reason Code</label>
-                    <select name="actionReasonCode" id="actionReasonCode">
+                    <select name="actionReasonCode" id="actionReasonCode" onChange={actionReasonCodeTypeChange} value={transportDataEntry.actionReasonCode}>
                         <option value="complianceTransaction">
                             Compliance Transaction
                         </option>
@@ -223,7 +255,7 @@ const TransportData = () => {
                 </div>
                 <div className="input_wrap" id="fieldsetinput" >
                     <label htmlFor="poNo">P.O. No.</label>
-                    <input type='text' name='poNo' id='poNo' />
+                    <input type='text' name='poNo' id='poNo' onChange={poNumberTypeChange} value={transportDataEntry.poNumber}/>
                 </div>
             </fieldset>
         </div >

@@ -1,6 +1,9 @@
 import "../createISF.css"
 
 const ConsolidatorData = () => {
+
+
+
     return (
         <div>
             <fieldset >

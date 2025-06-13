@@ -17,11 +17,13 @@ export const isfSlice = createSlice({
                 poNo: ""
             },
             consigneeData: {
-                qualirfier: "",
+                qualifierType: "",
+                qualifierNo:"",
                 name: ""
             },
             sellerData: {
-                qualifier: "",
+                qualifierType: "",
+                qualifierNo: "",
                 name: "",
                 address1: "",
                 address2: "",

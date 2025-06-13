@@ -1,6 +1,24 @@
 import "../createISF.css"
+import { info } from '../../../features/isf';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useState } from 'react';
 
 const SellerData = () => {
+    const dispatch = useDispatch();
+    const isf = useSelector(e => e.isf.value);
+    let isf1 = JSON.parse(JSON.stringify(isf))
+    const [sellerDataEntry, setsellerDataEntry] = useState({
+        ...isf1.sellerData
+    });
+
+    const qualirfierTypeChange = (e) => {
+                setsellerDataEntry((t) => ({ ...t, qualifierType: e.target.value }))
+                isf1["sellerData"]["qualifierType"] = e.target.value
+                dispatch(info(isf1))
+                console.log(isf)
+            }
+
     return (
         <div>
             <fieldset >
@@ -9,8 +27,11 @@ const SellerData = () => {
                 <div className="formContainer">
                     <div id="fieldsetinput">
                         <label htmlFor="sellerQualifier">Qualifier</label>
-                        <select name="sellerQualifier" id="sellerQualifier">
-                            <option value="sellerEIN">
+                        <select name="sellerQualifier" id="sellerQualifier" value={sellerDataEntry.qualifierType} onChange={qualirfierTypeChange}>
+                            <option  >
+                                -------
+                            </option>
+                            <option value="sellerEIN" >
                                 EIN
                             </option>
                             <option value="sellerDUN">
