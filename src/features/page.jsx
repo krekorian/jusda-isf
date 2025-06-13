@@ -5,9 +5,15 @@ export const pageSlice = createSlice({
     initialState: { value: 0 },
     reducers: {
         next: (state, action) => {
+            // console.log(`next state ${state}`)
+            // console.log(state.value);
+            // console.log(action)
             state.value = state.value + 1;
         },
         back: (state, action) => {
+            // console.log(`back state ${state}`)
+            // console.log(state.value);
+            // console.log(action);
             state.value = state.value - 1;
         },
     },

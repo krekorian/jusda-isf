@@ -12,12 +12,65 @@ const SellerData = () => {
         ...isf1.sellerData
     });
 
-    const qualirfierTypeChange = (e) => {
-                setsellerDataEntry((t) => ({ ...t, qualifierType: e.target.value }))
-                isf1["sellerData"]["qualifierType"] = e.target.value
-                dispatch(info(isf1))
-                console.log(isf)
-            }
+    const qualifierTypeChange = (e) => {
+        setsellerDataEntry((t) => ({ ...t, qualifierType: e.target.value }))
+        isf1["sellerData"]["qualifierType"] = e.target.value
+        dispatch(info(isf1))
+        console.log(isf)
+    }
+
+    const qualifierNoTypeChange = (e) => {
+        setsellerDataEntry((t) => ({ ...t, qualifierNo: e.target.value }))
+        isf1["sellerData"]["qualifierNo"] = e.target.value
+        dispatch(info(isf1))
+        console.log(isf)
+    }
+
+    const nameTypeChange = (e) => {
+        setsellerDataEntry((t) => ({ ...t, name: e.target.value }))
+        isf1["sellerData"]["name"] = e.target.value
+        dispatch(info(isf1))
+        console.log(isf)
+    }
+
+
+    const address1TypeChange = (e) => {
+        setsellerDataEntry((t) => ({ ...t, address1: e.target.value }))
+        isf1["sellerData"]["address1"] = e.target.value
+        dispatch(info(isf1))
+        console.log(isf)
+    }
+    const address2TypeChange = (e) => {
+        setsellerDataEntry((t) => ({ ...t, address2: e.target.value }))
+        isf1["sellerData"]["address2"] = e.target.value
+        dispatch(info(isf1))
+        console.log(isf)
+    }
+    const cityTypeChange = (e) => {
+        setsellerDataEntry((t) => ({ ...t, city: e.target.value }))
+        isf1["sellerData"]["city"] = e.target.value
+        dispatch(info(isf1))
+        console.log(isf)
+    }
+    const stateTypeChange = (e) => {
+        setsellerDataEntry((t) => ({ ...t, state: e.target.value }))
+        isf1["sellerData"]["state"] = e.target.value
+        dispatch(info(isf1))
+        console.log(isf)
+    }
+    const postalCodeTypeChange = (e) => {
+        setsellerDataEntry((t) => ({ ...t, postalCode: e.target.value }))
+        isf1["sellerData"]["postalCode"] = e.target.value
+        dispatch(info(isf1))
+        console.log(isf)
+    }
+    const countryTypeChange = (e) => {
+        setsellerDataEntry((t) => ({ ...t, country: e.target.value }))
+        isf1["sellerData"]["country"] = e.target.value
+        dispatch(info(isf1))
+        console.log(isf)
+    }
+
 
     return (
         <div>
@@ -27,7 +80,7 @@ const SellerData = () => {
                 <div className="formContainer">
                     <div id="fieldsetinput">
                         <label htmlFor="sellerQualifier">Qualifier</label>
-                        <select name="sellerQualifier" id="sellerQualifier" value={sellerDataEntry.qualifierType} onChange={qualirfierTypeChange}>
+                        <select name="sellerQualifier" id="sellerQualifier" value={sellerDataEntry.qualifierType} onChange={qualifierTypeChange}>
                             <option  >
                                 -------
                             </option>
@@ -74,35 +127,35 @@ const SellerData = () => {
                                 SG:DRV
                             </option>
                         </select>
-                        <input type='text' name='seller_qualifier' id='seller_qualifier' />
+                        <input type='text' name='seller_qualifier' id='seller_qualifier' value={sellerDataEntry.qualifierNo} onChange={qualifierNoTypeChange} />
                     </div>
                     <div id="fieldsetinput">
                         <label htmlFor="sellerQualifierName">Name</label>
-                        <input type='text' name='sellerQualifierName' id='sellerQualifierName' />
+                        <input type='text' name='sellerQualifierName' id='sellerQualifierName' value={sellerDataEntry.name} onChange={nameTypeChange} />
                     </div>
                     <div id="fieldsetinput">
                         <label htmlFor="sellerAddress1">Address 1:</label>
-                        <input type='text' name='sellerAddress1' id='sellerAddress1' />
+                        <input type='text' name='sellerAddress1' id='sellerAddress1' value={sellerDataEntry.address1} onChange={address1TypeChange} />
                     </div>
                     <div id="fieldsetinput">
                         <label htmlFor="sellerAddress2">Address 2:</label>
-                        <input type='text' name='sellerAddress2' id='sellerAddress2' />
+                        <input type='text' name='sellerAddress2' id='sellerAddress2' value={sellerDataEntry.address2} onChange={address2TypeChange} />
                     </div>
                     <div id="fieldsetinput">
                         <label htmlFor="sellerCity">City:</label>
-                        <input type='text' name='sellerCity' id='sellerCity' />
+                        <input type='text' name='sellerCity' id='sellerCity' value={sellerDataEntry.city} onChange={cityTypeChange} />
                     </div>
                     <div id="fieldsetinput">
                         <label htmlFor="sellerState">State</label>
-                        <input type='text' name='sellerState' id='sellerState' />
+                        <input type='text' name='sellerState' id='sellerState' value={sellerDataEntry.state} onChange={stateTypeChange} />
                     </div>
                     <div id="fieldsetinput">
                         <label htmlFor="sellerPostalCode">Postal Code</label>
-                        <input type='text' name='sellerPostalCode' id='sellerPostalCode' />
+                        <input type='text' name='sellerPostalCode' id='sellerPostalCode' value={sellerDataEntry.postalCode} onChange={postalCodeTypeChange} />
                     </div>
                     <div id="fieldsetinput">
                         <label htmlFor="sellerCountry">Country</label>
-                        <input type='text' name='sellerCountry' id='sellerCountry' />
+                        <input type='text' name='sellerCountry' id='sellerCountry' value={sellerDataEntry.country} onChange={countryTypeChange} />
                     </div>
                 </div>
 

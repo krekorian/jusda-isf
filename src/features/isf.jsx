@@ -18,7 +18,7 @@ export const isfSlice = createSlice({
             },
             consigneeData: {
                 qualifierType: "",
-                qualifierNo:"",
+                qualifierNo: "",
                 name: ""
             },
             sellerData: {
@@ -33,7 +33,8 @@ export const isfSlice = createSlice({
                 country: "",
             },
             consolidator: {
-                qualifier: "",
+                qualifierType: "",
+                qualifierNo: "",
                 name: "",
                 address1: "",
                 address2: "",
@@ -42,10 +43,11 @@ export const isfSlice = createSlice({
                 postalCode: "",
                 country: "",
             },
-            merchantData: {
-                c_o: "",
+            merchantData: [{
+                co: "",
                 manufacturerSupplier: "",
-                qualifier: "",
+                qualifierType: "",
+                qualifierNo: "",
                 name: "",
                 address1: "",
                 address2: "",
@@ -53,7 +55,7 @@ export const isfSlice = createSlice({
                 state: "",
                 postalCode: "",
                 country: "",
-            }
+            }]
 
 
         },
