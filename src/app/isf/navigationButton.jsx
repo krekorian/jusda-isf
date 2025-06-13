@@ -10,7 +10,9 @@ const NavigationButtons = () => {
     const isf = useSelector(e => e.isf.value)
     const dispatch = useDispatch();
     const nextClick = () => {
-        console.log(isf)
+        // console.log("isf under navigationButton")
+        // console.log(isf)
+        // dispatch(info{...isf})
         // dispatch(info({ ...isf, nextClick: true }));
         // if (isf.emailValid && isf.phoneValid && isf.name.length > 2 && page == 0) {
         //     dispatch(next());

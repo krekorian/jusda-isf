@@ -1,53 +1,113 @@
 import React, { useState } from 'react';
-import "../createISF.css"
+import "../createISF.css";
+import { info } from '../../../features/isf';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+
 
 const TransportData = () => {
-    const [transportData, settransportData] = useState({
-        mbl: "",
-        landingPort: "",
-        hbl: "",
-        unloadingPort: "",
-        mot: "",
-        shipmentType: "",
-        boardDate: "",
-        eta: "",
-        actionReasonCode: "",
-        poNumber: ""
+    const dispatch = useDispatch();
+    const isf = useSelector(e => e.isf.value);
+    console.log("isf when transportdata is loaded");
+    console.log(isf.transportData)
+    let isf1 = JSON.parse(JSON.stringify(isf))
+    const [transportDataEntry, settransportDataEntry] = useState({
+        ...isf1.transportData
     });
 
-    const [dataStatus, setdataStatus] = useState({
-        mbl: false,
-        landingPort: false,
-        hbl: false,
-        unloadingPort: false,
-        mot: false,
-        shipmentType: false,
-        boardDate: false,
-        eta: false,
-        actionReasonCode: false,
-        poNumber: false,
-    })
+    console.log(transportDataEntry)
 
+    const validateMBL = (mbl) => {
+        const mblEegex = /^\d{3}-\d{6}[0-6]$/
+        return (mblEegex.test(mbl) ? true : false)
+    }
+
+    const checkdataStatus = (i) => {
+        if (validateMBL(i.transportData.mbl)) {
+            return ({
+                mbl: true,
+                landingPort: false,
+                hbl: false,
+                unloadingPort: false,
+                mot: false,
+                shipmentType: false,
+                boardDate: false,
+                eta: false,
+                actionReasonCode: false,
+                poNumber: false,
+            })
+        } else {
+            return ({
+                mbl: false,
+                landingPort: false,
+                hbl: false,
+                unloadingPort: false,
+                mot: false,
+                shipmentType: false,
+                boardDate: false,
+                eta: false,
+                actionReasonCode: false,
+                poNumber: false,
+            })
+        }
+    }
+
+    const [dataStatus, setdataStatus] = useState(checkdataStatus(isf1))
 
 
     const mblChange = (e) => {
-        console.log(e.target.value)
-        const mblEegex = /^\d{3}-\d{6}[0-6]$/
-        if (mblEegex.test(e.target.value)) {
+
+        console.log(`vstarting mblCHange ${e.target.value}`)
+
+        if (validateMBL(e.target.value)) {
             // console.log("correct MBL");
-            settransportData(t => {
-                console.log(t)
+            settransportDataEntry(t => {
+                // console.log(t)
                 // console.log(typeof (e.target.value))
                 return { ...t, mbl: e.target.value }
 
 
             })
-            setdataStatus(({ ...dataStatus, mbl: e.target.value }))
-            console.log(transportData)
+            setdataStatus(({ ...dataStatus, mbl: true }))
+            // console.log("ISF under transport data")
+            // console.log(isf)
+
+            // console.log(isf1.transportData)
+            // console.log(transportDataEntry)
+            // console.log(Object.isExtensible(isf1.transportData))
+            // console.log(Object.isFrozen(isf1.transportData))
+            isf1["transportData"]["mbl"] = e.target.value
+            // console.log(isf1)
+            dispatch(info(isf1))
+            // console.log(transportDataEntry.mbl)
+            // console.log(`dataStatus ${dataStatus}`)
+            // console.log(isf)
+
+
+
 
         } else {
+            setdataStatus(({ ...dataStatus, mbl: false }))
+            settransportDataEntry(t => { return { ...t, mbl: e.target.value } })
             console.log(dataStatus.mbl)
         }
+    }
+
+    const landingPortChange = (e) => {
+        settransportDataEntry((t) => ({ ...t, landingPort: e.target.value }))
+        isf1["transportData"]["landingPort"] = e.target.value
+        dispatch(info(isf1))
+    }
+
+    const hblChange = (e) => {
+        settransportDataEntry((t) => ({ ...t, hbl: e.target.value }))
+        isf1["transportData"]["hbl"] = e.target.value
+        dispatch(info(isf1))
+    }
+    const unloadingPortChange = (e) => {
+        settransportDataEntry((t) => ({ ...t, unloadingPort: e.target.value }))
+        isf1["transportData"]["unloadingPort"] = e.target.value
+        dispatch(info(isf1))
     }
 
     return (
@@ -59,19 +119,19 @@ const TransportData = () => {
                 <div className="formContainer">
                     <div className="input_wrap"  >
                         <label htmlFor="MBL_OBL" id={dataStatus.mbl ? "" : "inputboxerror"}>MBL/OBL#</label>
-                        <input type='text' name='MBL_OBL' id='MBL_OBL' onChange={mblChange} />
+                        <input type='text' name='MBL_OBL' id='MBL_OBL' value={transportDataEntry.mbl} onChange={mblChange} />
                     </div>
                     <div className="landing Port" id="fieldsetinput">
                         <label htmlFor="landing_port">Landing Port</label>
-                        <input type='text' name='landing_port' id='landing_port' />
+                        <input type='text' name='landing_port' id='landing_port' onChange={landingPortChange} value={transportDataEntry.landingPort} />
                     </div>
                     <div className="input_wrap" id="fieldsetinput">
                         <label htmlFor="HBL">AMS Sent HBL#</label>
-                        <input type='text' name='HBL' id='HBL' />
+                        <input type='text' name='HBL' id='HBL' onChange={hblChange} value={transportDataEntry.hbl} />
                     </div>
                     <div className="unloading Port" id="fieldsetinput">
                         <label htmlFor="unloading_port">Unloanding Port</label>
-                        <input type='text' name='unloading_port' id='unloading_port' />
+                        <input type='text' name='unloading_port' id='unloading_port' onChange={unloadingPortChange} value={transportDataEntry.unloadingPort} />
                     </div>
                     <div id="fieldsetinput">
                         <label htmlFor="MOT">MOT</label>

@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const isfSlice = createSlice({
+export const isfStateSlice = createSlice({
     name: "isf",
     initialState: {
         value: {
@@ -64,5 +64,5 @@ export const isfSlice = createSlice({
         }
     },
 });
-export const { info } = isfSlice.actions;
-export default isfSlice.reducer;
+export const { info } = isfStateSlice.actions;
+export default isfStateSlice.reducer;

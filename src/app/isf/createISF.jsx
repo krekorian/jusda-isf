@@ -38,7 +38,11 @@ import NavigationButtons from "./navigationButton"
 // }
 
 const CreateISF = () => {
-    const page = useSelector((e) => e.page.value)
+    const page = useSelector((e) => {
+        console.log("e")
+        console.log(e)
+        return e.page.value
+    })
     const PageDisplay = () => {
         switch (page) {
             case 0:
